@@ -65,14 +65,8 @@ yarn build
 
 This will create a `build` folder with the production-ready files.
 
-### Deploying to GitHub Pages
+### Deploying to Netlify
 
-1. Install gh-pages:
-   ```bash
-   npm install --save gh-pages
-   # or
-   yarn add gh-pages
-   ```
 
 2. Update `package.json` with your repository URL:
    ```json
