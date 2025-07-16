@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Enhanced-Portfolio/static/css/main.83fe2ba0.css",
-    "main.js": "/Enhanced-Portfolio/static/js/main.a28e252d.js",
+    "main.js": "/Enhanced-Portfolio/static/js/main.22794cbd.js",
     "static/media/poppins-devanagari-400-normal.woff": "/Enhanced-Portfolio/static/media/poppins-devanagari-400-normal.421fe9869ff4b58e2d7b.woff",
     "static/media/poppins-devanagari-300-normal.woff": "/Enhanced-Portfolio/static/media/poppins-devanagari-300-normal.62c0b320ffa12beb056b.woff",
     "static/media/poppins-devanagari-600-normal.woff": "/Enhanced-Portfolio/static/media/poppins-devanagari-600-normal.1c97cee145d08449ab61.woff",
@@ -48,10 +48,10 @@
     "static/media/fira-code-symbols2-400-normal.woff2": "/Enhanced-Portfolio/static/media/fira-code-symbols2-400-normal.0412f32d131ffee849a4.woff2",
     "index.html": "/Enhanced-Portfolio/index.html",
     "main.83fe2ba0.css.map": "/Enhanced-Portfolio/static/css/main.83fe2ba0.css.map",
-    "main.a28e252d.js.map": "/Enhanced-Portfolio/static/js/main.a28e252d.js.map"
+    "main.22794cbd.js.map": "/Enhanced-Portfolio/static/js/main.22794cbd.js.map"
   },
   "entrypoints": [
     "static/css/main.83fe2ba0.css",
-    "static/js/main.a28e252d.js"
+    "static/js/main.22794cbd.js"
   ]
 }
