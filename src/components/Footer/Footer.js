@@ -176,7 +176,7 @@ const Footer = () => {
     { icon: <FaGithub />, url: 'https://github.com/RahulAIML', label: 'GitHub' },
     { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/buddhadeb-bhattacharya-005768299/', label: 'LinkedIn' },
     { icon: <FaTwitter />, url: 'https://twitter.com/yourusername', label: 'Twitter' },
-    { icon: <FaInstagram />, url: 'https://instagram.com/yourusername', label: 'Instagram' },
+    { icon: <FaInstagram />, url: 'https://www.instagram.com/rahul.bhattacharya.355?igsh=MW4xOXExbXIxNHY5aA==', label: 'Instagram' },
   ];
 
   const navLinks = [
