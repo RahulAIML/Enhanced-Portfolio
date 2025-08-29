@@ -198,7 +198,15 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <img src={`${process.env.PUBLIC_URL}/images/portfolio-image.jpg`} alt="Portfolio" />
+            <img
+              src={`${process.env.PUBLIC_URL}/images/portfolio-image.jpg?v=1`}
+              onError={(e) => {
+                // Fallback to relative path if PUBLIC_URL base path has issues
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = 'images/portfolio-image.jpg?v=1';
+              }}
+              alt="Portfolio"
+            />
           </ImageWrapper>
           
           <TextContent
