@@ -198,7 +198,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <img src="/images/portfolio-image.jpg" alt="Portfolio" />
+            <img src={`${process.env.PUBLIC_URL}/images/portfolio-image.jpg`} alt="Portfolio" />
           </ImageWrapper>
           
           <TextContent
