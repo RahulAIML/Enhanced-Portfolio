@@ -308,7 +308,7 @@ const Contact = () => {
               </div>
               <div className="details">
                 <h4>Location</h4>
-                <span>Kharagpur, India</span>
+                <span>Hemnipur, WB, India</span>
               </div>
             </ContactMethod>
             

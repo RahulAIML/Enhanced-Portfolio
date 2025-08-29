@@ -135,11 +135,12 @@ const Hero = () => {
         >
           <Greeting variants={itemVariants}>Hi, my name is</Greeting>
           <Name variants={itemVariants}>Buddhadeb Bhattacharya</Name>
-          <Title variants={itemVariants}>I build intelligent web experiences.</Title>
+          <Title variants={itemVariants}>AI/ML Engineer & Data Science Enthusiast</Title>
           <Description variants={itemVariants}>
-            I'm a passionate web developer and AI enthusiast with expertise in creating beautiful,
-            responsive, and intelligent web applications. I love turning innovative ideas into reality
-            through code and exploring the intersection of web development and artificial intelligence.
+            Skilled in AI/ML, Python, and NLP with hands-on experience in building end‑to‑end
+            solutions: dataset creation, LLM fine‑tuning, information extraction, and production‑ready
+            REST APIs with Django and Docker. Focused on building reliable, testable models and
+            integrating AI into real products.
           </Description>
           <Button
             variants={itemVariants}

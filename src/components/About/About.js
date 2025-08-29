@@ -129,37 +129,31 @@ const SkillItem = styled(motion.div)`
 
 const About = () => {
   const skills = [
-    // Frontend
-    'ReactJS',
-    'JavaScript',
-    'HTML5',
-    'CSS3',
-    'Bootstrap',
-    'Tailwind CSS',
-    'Responsive Design',
-    'Axios',
-    'React Router',
-    'Hooks',
-    'Context API',
+    // AI/ML & Data
+    'Python',
+    'TensorFlow',
+    'scikit-learn',
+    'Hugging Face Transformers',
+    'LangChain',
+    'Pandas',
+    'NumPy',
+    'Seaborn',
+    'Matplotlib',
+    'OpenCV',
     
-    // Tools & Platforms
-    'VS Code',
-    'Chrome DevTools',
-    'Postman',
+    // Backend & APIs
+    'Django REST Framework',
+    'Flask',
+    'REST APIs',
+    'Docker',
     
-    // Version Control
+    // Databases & Tools
+    'MySQL',
+    'SQLite',
     'Git',
     'GitHub',
-    
-    // Backend
-    'Node.js',
-    'Django',
-    'REST APIs',
-    
-    // Soft Skills
-    'Collaboration',
-    'Communication',
-    'Problem-solving',
+    'VS Code',
+    'Postman',
   ];
 
   const containerVariants = {
@@ -214,15 +208,15 @@ const About = () => {
             viewport={{ once: true }}
           >
             <motion.p variants={itemVariants}>
-              Passionate and self-driven Frontend Developer with hands-on experience building responsive and dynamic web applications using ReactJS, JavaScript, and HTML/CSS. Proficient in creating reusable components, integrating APIs, and designing responsive UI/UX.
+              Data Science enthusiast skilled in AI/ML, Python, and NLP—focused on building reliable, testable models and shipping real product features. Experienced with dataset creation, LLM fine‑tuning, classical ML, and deployment.
             </motion.p>
             
             <motion.p variants={itemVariants}>
-              Completed multiple personal projects including a Recipe Finder, Portfolio Website, and SmartPay Dashboard. Strong foundation in computer science fundamentals, version control (Git/GitHub), and collaborative teamwork through real-world internship experience.
+              Recently worked as an AI Engineer Intern where I fine‑tuned Gemma for document information extraction, built REST APIs with Django, containerized services with Docker, and collaborated with frontend and backend teams to integrate AI into production.
             </motion.p>
             
             <motion.p variants={itemVariants}>
-              Additionally, I have a solid understanding of Artificial Intelligence (AI) concepts, including Generative AI, Machine Learning (ML), and Large Language Models (LLMs), and I actively explore how these can enhance modern web applications.
+              I enjoy turning raw data into insights and building practical AI tools—ranging from RAG chatbots to code‑assistants and sentiment analysis systems.
             </motion.p>
             
             <motion.p variants={itemVariants}>

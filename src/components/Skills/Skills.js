@@ -184,6 +184,9 @@ const skillsData = [
       { name: 'Seaborn', level: 80, icon: <SiPandas /> },
       { name: 'Machine Learning', level: 82, icon: <SiTensorflow /> },
       { name: 'Deep Learning', level: 80, icon: <SiPytorch /> },
+      { name: 'Hugging Face', level: 75, icon: <SiPytorch /> },
+      { name: 'LangChain', level: 70, icon: <SiTensorflow /> },
+      { name: 'OpenCV', level: 70, icon: <FaCode /> },
     ],
   },
   {

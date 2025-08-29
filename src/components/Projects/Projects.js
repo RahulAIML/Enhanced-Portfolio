@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiFolder } from 'react-icons/fi';
 
 const ProjectsSection = styled.section`
   padding: 100px 5%;
@@ -35,6 +35,28 @@ const SectionTitle = styled(motion.h2)`
     width: 100px;
     height: 3px;
     background: ${theme.colors.primary};
+  }
+`;
+
+const ProjectThumb = styled.div`
+  height: 160px;
+  border-radius: 10px;
+  background: ${({ category }) =>
+    category === 'aiml'
+      ? 'linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%)'
+      : 'linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.15);
+  
+  .icon {
+    font-size: 2.2rem;
+    opacity: 0.9;
   }
 `;
 
@@ -124,6 +146,22 @@ const ProjectCard = styled(motion.div)`
       }
     }
     
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      
+      span {
+        font-size: 0.75rem;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.12);
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+      }
+    }
+    
     .project-links {
       display: flex;
       gap: 1rem;
@@ -156,41 +194,85 @@ const projectsData = [
   {
     id: 1,
     title: 'CodeGen AI Assistant',
-    description: 'An AI Coding Assistant built with Transformers and Streamlit that generates Python code from natural language prompts and provides data exploration features including CSV/XLSX uploads, Pandas summaries, and interactive Seaborn visualizations.',
+    description: 'AI code assistant in Streamlit powered by Transformers. Supports CSV/XLSX upload, automatic EDA (Pandas/Seaborn), and code generation from natural language.',
     tags: ['Python', 'Transformers', 'Streamlit', 'Pandas', 'Seaborn'],
+    badges: ['EDA + Code Gen'],
     github: 'https://github.com/RahulAIML/Codegen-ai-assistant-data-explorer',
     demo: null,
     category: 'aiml',
   },
-  
-  // Frontend Projects
   {
     id: 2,
+    title: 'Twitter Sentiment Analysis',
+    description: 'Classifies tweet sentiment using NLP (tokenization, stemming, TF‑IDF) with TensorFlow / scikit‑learn.',
+    tags: ['Python', 'TensorFlow', 'scikit-learn', 'NLP', 'TF-IDF'],
+    badges: ['NLP', 'TF‑IDF'],
+    github: 'https://github.com/RahulAIML/Twitter-Sentiment-Analysis',
+    demo: null,
+    category: 'aiml',
+  },
+  {
+    id: 3,
+    title: 'DocChat — RAG Chatbot',
+    description: 'Retrieval‑Augmented Generation chatbot to query PDFs/Excel/Text using LangChain and HF Transformers with a Streamlit UI.',
+    tags: ['Python', 'LangChain', 'Hugging Face', 'Streamlit', 'RAG'],
+    badges: ['RAG', 'File Upload'],
+    github: 'https://github.com/RahulAIML/DocChat-RAG_Based_Chat_Application',
+    demo: null,
+    category: 'aiml',
+  },
+  {
+    id: 4,
+    title: 'Cat vs Dog Image Classification',
+    description: 'CNN-based image classifier to distinguish cats and dogs; data preprocessing and training pipeline included.',
+    tags: ['Python', 'TensorFlow', 'CNN', 'Computer Vision'],
+    badges: ['CNN'],
+    github: 'https://github.com/RahulAIML/cat-Dog-Image-Classification',
+    demo: null,
+    category: 'aiml',
+  },
+  {
+    id: 5,
+    title: 'Drone Landing without GPS',
+    description: 'Computer-vision driven autonomous landing approach for drones without GPS dependency.',
+    tags: ['Computer Vision', 'Robotics', 'Python'],
+    badges: ['CV', 'Robotics'],
+    github: 'https://github.com/RahulAIML/Drone_Project-LandingWithoutGPS',
+    demo: null,
+    category: 'aiml',
+  },
+
+  // Frontend Projects (HTML/CSS/JS/React)
+  {
+    id: 6,
     title: 'SmartPay Dashboard',
-    description: 'A responsive payment analytics dashboard with charts, navigation, and authentication. Built with a focus on clean UI and user experience.',
+    description: 'Responsive payment analytics dashboard with charts, navigation, and authentication; clean UI/UX.',
     tags: ['React', 'Tailwind CSS', 'Chart.js', 'React Router'],
+    badges: ['React', 'Charts'],
     github: 'https://github.com/RahulAIML/SmartPay',
     demo: null,
     category: 'frontend',
   },
   {
-    id: 3,
+    id: 7,
     title: 'Recipe Finder App',
-    description: 'A real-time recipe search application built with React and TheMealDB API. Features include searching recipes by ingredients, viewing detailed recipes, and filtering by meal type.',
+    description: 'Real-time recipe search with TheMealDB API; filter by ingredients and meal type.',
     tags: ['React', 'Axios', 'TheMealDB API', 'React Hooks'],
+    badges: ['API'],
     github: 'https://github.com/RahulAIML/recipe-finder-app',
     demo: null,
     category: 'frontend',
   },
   {
-    id: 4,
+    id: 8,
     title: 'Personal Portfolio',
-    description: 'A modern, responsive portfolio website built with React and styled-components. Features a clean UI, smooth animations, and sections for projects, skills, and contact information.',
+    description: 'Modern portfolio built with React and styled-components, smooth animations and responsive design.',
     tags: ['React', 'Styled Components', 'Framer Motion', 'Responsive Design'],
+    badges: ['Responsive'],
     github: 'https://github.com/RahulAIML/portfolio',
     demo: null,
     category: 'frontend',
-  }
+  },
 ];
 
 const Projects = () => {
@@ -242,6 +324,9 @@ const Projects = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
+                <ProjectThumb category={project.category}>
+                  <FiFolder className="icon" />
+                </ProjectThumb>
                 <div className="project-content">
                   <h3>
                     {project.title}
@@ -261,6 +346,13 @@ const Projects = () => {
                     </div>
                   </h3>
                   <p>{project.description}</p>
+                  {project.badges && project.badges.length > 0 && (
+                    <div className="project-badges">
+                      {project.badges.map((b, i) => (
+                        <span key={i}>{b}</span>
+                      ))}
+                    </div>
+                  )}
                   <div className="project-tech">
                     {project.tags.map((tag, index) => (
                       <span key={index}>{tag}</span>
