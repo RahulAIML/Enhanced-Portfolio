@@ -295,10 +295,10 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h3>Let's talk about your project</h3>
+          <h3>Let's work together</h3>
           <p>
-            I'm always open to discussing product design work or partnership opportunities. 
-            Feel free to reach out to me using the contact information below or by filling out the form.
+            I'm open to AI engineering roles, automation projects, and collaboration opportunities.
+            Whether you have a product idea, a technical challenge, or just want to connect — feel free to reach out.
           </p>
           
           <div className="contact-methods">
@@ -308,7 +308,7 @@ const Contact = () => {
               </div>
               <div className="details">
                 <h4>Location</h4>
-                <span>Hemnipur, WB, India</span>
+                <span>Kolkata, West Bengal, India</span>
               </div>
             </ContactMethod>
             
