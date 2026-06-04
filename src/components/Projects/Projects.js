@@ -25,7 +25,7 @@ const SectionTitle = styled(motion.h2)`
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -41,8 +41,8 @@ const SectionTitle = styled(motion.h2)`
 const ProjectThumb = styled.div`
   height: 160px;
   border-radius: 10px;
-  background: ${({ category }) =>
-    category === 'aiml'
+  background: ${({ $category }) =>
+    $category === 'aiml'
       ? 'linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%)'
       : 'linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)'};
   display: flex;
@@ -52,8 +52,8 @@ const ProjectThumb = styled.div`
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 80px rgba(0,0,0,0.15);
-  
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.15);
+
   .icon {
     font-size: 2.2rem;
     opacity: 0.9;
@@ -69,16 +69,15 @@ const Filters = styled.div`
 `;
 
 const FilterButton = styled(motion.button)`
-  background: transparent;
+  background: ${({ $active }) => ($active ? theme.colors.primary : 'transparent')};
   border: 1px solid ${theme.colors.primary};
-  color: ${({ active }) => (active ? theme.colors.background : theme.colors.primary)};
+  color: ${({ $active }) => ($active ? theme.colors.background : theme.colors.primary)};
   padding: 0.5rem 1.5rem;
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: ${({ active }) => (active ? theme.colors.primary : 'transparent')};
-  
+
   &:hover {
     background: ${theme.colors.primary};
     color: ${theme.colors.background};
@@ -87,10 +86,10 @@ const FilterButton = styled(motion.button)`
 
 const ProjectsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
-  
+
   @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
   }
@@ -101,96 +100,90 @@ const ProjectCard = styled(motion.div)`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: ${theme.shadows.lg};
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 1.5rem;
-  
+  transition: box-shadow 0.3s ease;
+
   &:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
   }
-  
-  .project-content {
+
+  .project-title {
+    color: ${theme.colors.text};
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-description {
+    color: ${theme.colors.textSecondary};
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    flex: 1;
+  }
+
+  .project-badges {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    
-    h3 {
-      color: ${theme.colors.text};
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 0.75rem;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+
+    span {
+      font-size: 0.78rem;
+      color: ${theme.colors.primary};
+      background: rgba(37, 99, 235, 0.1);
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+    }
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    a {
+      color: ${theme.colors.primary};
       display: flex;
-      justify-content: space-between;
       align-items: center;
-    }
-    
-    p {
-      color: ${theme.colors.textSecondary};
-      margin-bottom: 1.5rem;
-    }
-    
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
-      
-      span {
-        font-size: 0.8rem;
-        color: ${theme.colors.primary};
-        background: rgba(37, 99, 235, 0.1);
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: ${theme.colors.primaryLight};
+        transform: translateY(-2px);
       }
-    }
-    
-    .project-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      
-      span {
-        font-size: 0.75rem;
-        color: #10b981;
-        background: rgba(16, 185, 129, 0.12);
-        padding: 0.25rem 0.6rem;
-        border-radius: 999px;
-        border: 1px solid rgba(16, 185, 129, 0.25);
-      }
-    }
-    
-    .project-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: auto;
-      
-      a {
-        color: ${theme.colors.primary};
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        
-        &:hover {
-          color: ${theme.colors.primaryLight};
-          transform: translateY(-2px);
-        }
-        
-        svg {
-          font-size: 1.1rem;
-        }
-      }
+
+      svg { font-size: 1rem; }
     }
   }
 `;
 
 const projectsData = [
-  // AI/ML Projects
   {
     id: 1,
     title: 'CodeGen AI Assistant',
@@ -204,9 +197,9 @@ const projectsData = [
   {
     id: 2,
     title: 'Twitter Sentiment Analysis',
-    description: 'Classifies tweet sentiment using NLP (tokenization, stemming, TF‑IDF) with TensorFlow / scikit‑learn.',
+    description: 'Classifies tweet sentiment using NLP (tokenization, stemming, TF-IDF) with TensorFlow / scikit-learn.',
     tags: ['Python', 'TensorFlow', 'scikit-learn', 'NLP', 'TF-IDF'],
-    badges: ['NLP', 'TF‑IDF'],
+    badges: ['NLP', 'TF-IDF'],
     github: 'https://github.com/RahulAIML/Twitter-Sentiment-Analysis',
     demo: null,
     category: 'aiml',
@@ -214,7 +207,7 @@ const projectsData = [
   {
     id: 3,
     title: 'DocChat — RAG Chatbot',
-    description: 'Retrieval‑Augmented Generation chatbot to query PDFs/Excel/Text using LangChain and HF Transformers with a Streamlit UI.',
+    description: 'Retrieval-Augmented Generation chatbot to query PDFs, Excel, and text files using LangChain and HF Transformers with a Streamlit UI.',
     tags: ['Python', 'LangChain', 'Hugging Face', 'Streamlit', 'RAG'],
     badges: ['RAG', 'File Upload'],
     github: 'https://github.com/RahulAIML/DocChat-RAG_Based_Chat_Application',
@@ -223,8 +216,8 @@ const projectsData = [
   },
   {
     id: 4,
-    title: 'Cat vs Dog Image Classification',
-    description: 'CNN-based image classifier to distinguish cats and dogs; data preprocessing and training pipeline included.',
+    title: 'Cat vs Dog Classifier',
+    description: 'CNN-based image classifier to distinguish cats and dogs; includes full data preprocessing and training pipeline.',
     tags: ['Python', 'TensorFlow', 'CNN', 'Computer Vision'],
     badges: ['CNN'],
     github: 'https://github.com/RahulAIML/cat-Dog-Image-Classification',
@@ -241,12 +234,10 @@ const projectsData = [
     demo: null,
     category: 'aiml',
   },
-
-  // Frontend Projects (HTML/CSS/JS/React)
   {
     id: 6,
     title: 'SmartPay Dashboard',
-    description: 'Responsive payment analytics dashboard with charts, navigation, and authentication; clean UI/UX.',
+    description: 'Responsive payment analytics dashboard with charts, navigation, and authentication — clean UI/UX.',
     tags: ['React', 'Tailwind CSS', 'Chart.js', 'React Router'],
     badges: ['React', 'Charts'],
     github: 'https://github.com/RahulAIML/SmartPay',
@@ -266,8 +257,8 @@ const projectsData = [
   {
     id: 8,
     title: 'Personal Portfolio',
-    description: 'Modern portfolio built with React and styled-components, smooth animations and responsive design.',
-    tags: ['React', 'Styled Components', 'Framer Motion', 'Responsive Design'],
+    description: 'Modern portfolio built with React and styled-components — smooth animations and responsive design.',
+    tags: ['React', 'Styled Components', 'Framer Motion', 'Responsive'],
     badges: ['Responsive'],
     github: 'https://github.com/RahulAIML/portfolio',
     demo: null,
@@ -277,16 +268,16 @@ const projectsData = [
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  
+
   const filters = [
     { id: 'all', name: 'All' },
-    { id: 'frontend', name: 'Frontend' },
     { id: 'aiml', name: 'AI/ML' },
+    { id: 'frontend', name: 'Frontend' },
   ];
-  
-  const filteredProjects = activeFilter === 'all' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === activeFilter);
+
+  const filteredProjects = activeFilter === 'all'
+    ? projectsData
+    : projectsData.filter((p) => p.category === activeFilter);
 
   return (
     <ProjectsSection id="projects">
@@ -299,12 +290,12 @@ const Projects = () => {
         >
           My Projects
         </SectionTitle>
-        
+
         <Filters>
           {filters.map((filter) => (
             <FilterButton
               key={filter.id}
-              active={activeFilter === filter.id}
+              $active={activeFilter === filter.id}
               onClick={() => setActiveFilter(filter.id)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -313,51 +304,47 @@ const Projects = () => {
             </FilterButton>
           ))}
         </Filters>
-        
-        <AnimatePresence>
-          <ProjectsGrid>
-            {filteredProjects.map((project) => (
+
+        <AnimatePresence mode="wait">
+          <ProjectsGrid key={activeFilter}>
+            {filteredProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, delay: index * 0.07 }}
               >
-                <ProjectThumb category={project.category}>
+                <ProjectThumb $category={project.category}>
                   <FiFolder className="icon" />
                 </ProjectThumb>
-                <div className="project-content">
-                  <h3>
-                    {project.title}
-                    <div className="project-links">
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                          <FiGithub />
-                          <span>View Code</span>
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                          <FiExternalLink />
-                          <span>Live Demo</span>
-                        </a>
-                      )}
-                    </div>
-                  </h3>
-                  <p>{project.description}</p>
-                  {project.badges && project.badges.length > 0 && (
-                    <div className="project-badges">
-                      {project.badges.map((b, i) => (
-                        <span key={i}>{b}</span>
-                      ))}
-                    </div>
-                  )}
-                  <div className="project-tech">
-                    {project.tags.map((tag, index) => (
-                      <span key={index}>{tag}</span>
-                    ))}
+
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+
+                {project.badges?.length > 0 && (
+                  <div className="project-badges">
+                    {project.badges.map((b, i) => <span key={i}>{b}</span>)}
                   </div>
+                )}
+
+                <div className="project-tech">
+                  {project.tags.map((tag, i) => <span key={i}>{tag}</span>)}
+                </div>
+
+                <div className="project-links">
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="View source code on GitHub">
+                      <FiGithub />
+                      View Code
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label="Open live demo">
+                      <FiExternalLink />
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </ProjectCard>
             ))}
