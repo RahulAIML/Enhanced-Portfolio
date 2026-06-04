@@ -2,6 +2,7 @@
   "name": "my-portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rahulaiml.github.io/Enhanced-Portfolio",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@fontsource/fira-code": "^5.2.6",
