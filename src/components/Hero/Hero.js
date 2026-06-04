@@ -38,27 +38,35 @@ const Name = styled(motion.h1)`
   color: ${theme.colors.text};
   margin: 0;
   line-height: 1.1;
-  
+
   @media (max-width: ${theme.breakpoints.md}) {
     font-size: 3rem;
   }
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: ${theme.colors.textSecondary};
   margin: 0.5rem 0 1.5rem;
-  
+
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 `;
 
+const TagLine = styled(motion.p)`
+  font-size: 1rem;
+  color: ${theme.colors.primary};
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+`;
+
 const Description = styled(motion.p)`
-  max-width: 600px;
-  font-size: 1.2rem;
-  line-height: 1.6;
+  max-width: 650px;
+  font-size: 1.15rem;
+  line-height: 1.7;
   color: ${theme.colors.textSecondary};
   margin-bottom: 2.5rem;
 `;
@@ -75,7 +83,7 @@ const Button = styled(motion.a)`
   cursor: pointer;
   text-decoration: none;
   width: fit-content;
-  
+
   &:hover {
     background: ${theme.colors.primaryLight};
     transform: translateY(-3px);
@@ -93,7 +101,7 @@ const SocialLink = styled(motion.a)`
   color: ${theme.colors.text};
   font-size: 1.5rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     color: ${theme.colors.primary};
     transform: translateY(-3px);
@@ -133,14 +141,16 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          <Greeting variants={itemVariants}>Hi, my name is</Greeting>
+          <Greeting variants={itemVariants}>Hi, I'm</Greeting>
           <Name variants={itemVariants}>Buddhadeb Bhattacharya</Name>
-          <Title variants={itemVariants}>AI/ML Engineer & Data Science Enthusiast</Title>
+          <Title variants={itemVariants}>AI & Automation Engineer</Title>
+          <TagLine variants={itemVariants}>
+            LLM Systems &nbsp;|&nbsp; Intelligent Document Processing &nbsp;|&nbsp; RAG & Workflow Automation &nbsp;|&nbsp; Backend AI
+          </TagLine>
           <Description variants={itemVariants}>
-            Skilled in AI/ML, Python, and NLP with hands-on experience in building end‑to‑end
-            solutions: dataset creation, LLM fine‑tuning, information extraction, and production‑ready
-            REST APIs with Django and Docker. Focused on building reliable, testable models and
-            integrating AI into real products.
+            I build AI-powered automation systems that solve real operational problems. My work combines
+            Generative AI, NLP, and backend engineering to design production-ready intelligent systems
+            that move beyond experimentation into real deployment.
           </Description>
           <Button
             variants={itemVariants}
@@ -150,7 +160,7 @@ const Hero = () => {
           >
             Get In Touch
           </Button>
-          
+
           <SocialLinks>
             {[
               { platform: 'github', url: 'https://github.com/RahulAIML' },

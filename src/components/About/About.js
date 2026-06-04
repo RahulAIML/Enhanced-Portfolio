@@ -25,7 +25,7 @@ const SectionTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   display: inline-block;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -40,57 +40,72 @@ const SectionTitle = styled(motion.h2)`
 
 const Content = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4rem;
   margin-top: 2rem;
-  
+
   @media (max-width: ${theme.breakpoints.lg}) {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 `;
 
-const ImageWrapper = styled(motion.div)`
+const TechProfileCard = styled(motion.div)`
   flex: 1;
-  max-width: 400px;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid ${theme.colors.primary};
-    border-radius: 5px;
-    z-index: 0;
-    transition: all 0.3s ease;
+  max-width: 420px;
+  min-width: 320px;
+  background: #0d1117;
+  border-radius: 10px;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  overflow: hidden;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.12), 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  .card-header {
+    background: #161b22;
+    padding: 0.65rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red    { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green  { background: #28c840; }
+
+    .filename {
+      color: #8b949e;
+      font-size: 0.78rem;
+      margin-left: 0.6rem;
+    }
   }
-  
-  &:hover::before {
-    top: 15px;
-    left: 15px;
-  }
-  
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    position: relative;
-    z-index: 1;
-    filter: grayscale(20%) contrast(1.1);
-    transition: all 0.3s ease;
-  }
-  
-  &:hover img {
-    filter: grayscale(0%) contrast(1);
+
+  .card-body {
+    padding: 1.4rem 1.6rem;
+    font-size: 0.84rem;
+    line-height: 2;
+
+    p { margin: 0; }
+
+    .ln  { color: #3d444d; margin-right: 1.2rem; user-select: none; display: inline-block; min-width: 1.4rem; text-align: right; }
+    .kw  { color: #ff7b72; }
+    .var { color: #79c0ff; }
+    .str { color: #a5d6ff; }
+    .prop{ color: #ffa657; }
+    .br  { color: #f8f8f2; }
+    .cmt { color: #3d444d; font-style: italic; }
   }
 `;
 
 const TextContent = styled(motion.div)`
   flex: 1;
-  
+
   p {
     color: ${theme.colors.textSecondary};
     font-size: 1.1rem;
@@ -104,7 +119,7 @@ const SkillsList = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 2rem;
-  
+
   @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
   }
@@ -114,12 +129,12 @@ const SkillItem = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  
+
   span {
     color: ${theme.colors.primary};
     font-size: 0.9rem;
   }
-  
+
   &::before {
     content: '▹';
     color: ${theme.colors.primary};
@@ -129,41 +144,25 @@ const SkillItem = styled(motion.div)`
 
 const About = () => {
   const skills = [
-    // AI/ML & Data
     'Python',
-    'TensorFlow',
-    'scikit-learn',
+    'Large Language Models (LLM)',
+    'RAG Systems',
     'Hugging Face Transformers',
     'LangChain',
-    'Pandas',
-    'NumPy',
-    'Seaborn',
-    'Matplotlib',
-    'OpenCV',
-    
-    // Backend & APIs
+    'LayoutLM / Donut',
     'Django REST Framework',
-    'Flask',
-    'REST APIs',
     'Docker',
-    
-    // Databases & Tools
-    'MySQL',
-    'SQLite',
-    'Git',
-    'GitHub',
-    'VS Code',
-    'Postman',
+    'Make (Integromat)',
+    'Zapier',
+    'Pandas & NumPy',
+    'OpenCV',
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
     },
   };
 
@@ -172,12 +171,25 @@ const About = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-      },
+      transition: { type: 'spring', stiffness: 100 },
     },
   };
+
+  const codeLines = [
+    { n: 1,  jsx: <><span className="kw">const</span> <span className="var">engineer</span> <span className="br">= {'{'}</span></> },
+    { n: 2,  jsx: <>&nbsp;&nbsp;<span className="prop">name</span><span className="br">:</span> <span className="str">"Buddhadeb Bhattacharya"</span><span className="br">,</span></> },
+    { n: 3,  jsx: <>&nbsp;&nbsp;<span className="prop">role</span><span className="br">:</span> <span className="str">"AI & Automation Engineer"</span><span className="br">,</span></> },
+    { n: 4,  jsx: <>&nbsp;&nbsp;<span className="prop">focus</span><span className="br">: [</span></> },
+    { n: 5,  jsx: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"LLM Systems & RAG"</span><span className="br">,</span></> },
+    { n: 6,  jsx: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"Intelligent Document Processing"</span><span className="br">,</span></> },
+    { n: 7,  jsx: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"Workflow Automation"</span><span className="br">,</span></> },
+    { n: 8,  jsx: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"Backend AI (Django, Docker)"</span><span className="br">,</span></> },
+    { n: 9,  jsx: <>&nbsp;&nbsp;<span className="br">],</span></> },
+    { n: 10, jsx: <>&nbsp;&nbsp;<span className="prop">stack</span><span className="br">:</span> <span className="br">[</span><span className="str">"Python"</span><span className="br">,</span> <span className="str">"HuggingFace"</span><span className="br">,</span></> },
+    { n: 11, jsx: <>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"LangChain"</span><span className="br">,</span> <span className="str">"Django"</span><span className="br">,</span> <span className="str">"Docker"</span><span className="br">],</span></> },
+    { n: 12, jsx: <>&nbsp;&nbsp;<span className="prop">available</span><span className="br">:</span> <span className="kw">true</span><span className="br">,</span></> },
+    { n: 13, jsx: <><span className="br">{'}'}</span><span className="cmt">;</span></> },
+  ];
 
   return (
     <AboutSection id="about">
@@ -190,25 +202,30 @@ const About = () => {
         >
           About Me
         </SectionTitle>
-        
+
         <Content>
-          <ImageWrapper
+          <TechProfileCard
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/portfolio-image.jpg?v=1`}
-              onError={(e) => {
-                // Fallback to relative path if PUBLIC_URL base path has issues
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = 'images/portfolio-image.jpg?v=1';
-              }}
-              alt="Portfolio"
-            />
-          </ImageWrapper>
-          
+            <div className="card-header">
+              <div className="dot dot-red" />
+              <div className="dot dot-yellow" />
+              <div className="dot dot-green" />
+              <span className="filename">profile.ts</span>
+            </div>
+            <div className="card-body">
+              {codeLines.map((line) => (
+                <p key={line.n}>
+                  <span className="ln">{line.n}</span>
+                  {line.jsx}
+                </p>
+              ))}
+            </div>
+          </TechProfileCard>
+
           <TextContent
             variants={containerVariants}
             initial="hidden"
@@ -216,28 +233,30 @@ const About = () => {
             viewport={{ once: true }}
           >
             <motion.p variants={itemVariants}>
-              Data Science enthusiast skilled in AI/ML, Python, and NLP—focused on building reliable, testable models and shipping real product features. Experienced with dataset creation, LLM fine‑tuning, classical ML, and deployment.
+              I build AI-powered automation systems that solve real operational problems. My work combines
+              Generative AI, NLP, and backend engineering to design production-ready intelligent systems
+              that move beyond experimentation into real deployment.
             </motion.p>
-            
+
             <motion.p variants={itemVariants}>
-              Recently worked as an AI Engineer Intern where I fine‑tuned Gemma for document information extraction, built REST APIs with Django, containerized services with Docker, and collaborated with frontend and backend teams to integrate AI into production.
+              I specialize in LLM-powered applications, RAG-based systems, intelligent document processing
+              (OCR + NLP + Transformer models), and workflow automation through API orchestration. Currently
+              focused on integrating LLMs with backend infrastructure to automate workflows and optimize
+              operational pipelines.
             </motion.p>
-            
+
             <motion.p variants={itemVariants}>
-              I enjoy turning raw data into insights and building practical AI tools—ranging from RAG chatbots to code‑assistants and sentiment analysis systems.
+              I aim to build scalable, maintainable AI systems that reduce manual operations, improve
+              accuracy, and deliver measurable efficiency gains in production environments.
             </motion.p>
-            
+
             <motion.p variants={itemVariants}>
-              Here are some of the technologies I work with:
+              Technologies I work with:
             </motion.p>
-            
+
             <SkillsList>
               {skills.map((skill, index) => (
-                <SkillItem
-                  key={index}
-                  variants={itemVariants}
-                  custom={index}
-                >
+                <SkillItem key={index} variants={itemVariants} custom={index}>
                   <span>{skill}</span>
                 </SkillItem>
               ))}
