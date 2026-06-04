@@ -22,12 +22,11 @@ const Container = styled.div`
 const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   color: ${theme.colors.text};
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
   text-align: center;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  width: 100%;
 
   &::after {
     content: '';
@@ -38,6 +37,10 @@ const SectionTitle = styled(motion.h2)`
     width: 100px;
     height: 3px;
     background: ${theme.colors.primary};
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: 2rem;
   }
 `;
 
