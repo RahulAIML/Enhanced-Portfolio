@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import { FaCode, FaServer, FaDatabase, FaLaptopCode, FaTools, FaGithub, FaDocker, FaRobot, FaPlug } from 'react-icons/fa';
-import { DiPython, DiJava, DiJavascript } from 'react-icons/di';
-import { SiDjango, SiFlask, SiStreamlit, SiGit, SiPostman, SiJupyter, SiPandas, SiNumpy, SiTensorflow, SiPytorch, SiZapier, SiHuggingface } from 'react-icons/si';
+import { DiPython, DiJava, DiJavascript, DiHtml5, DiCss3, DiVisualstudio } from 'react-icons/di';
+import { SiDjango, SiFlask, SiStreamlit, SiGit, SiPostman, SiJupyter, SiPandas, SiNumpy, SiTensorflow, SiPytorch, SiZapier } from 'react-icons/si';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 const SkillsSection = styled.section`
@@ -105,7 +105,6 @@ const SkillItem = styled(motion.li)`
   }
 
   .skill-info {
-    flex: 1;
     h4 {
       color: ${theme.colors.text};
       font-size: 1.1rem;
@@ -133,43 +132,10 @@ const skillsData = [
     title: 'LLM & Generative AI',
     icon: <FaRobot />,
     skills: [
-      { name: 'Large Language Models', level: 88, icon: <FaRobot /> },
+      { name: 'Large Language Models (LLM)', level: 88, icon: <FaRobot /> },
       { name: 'RAG Systems', level: 85, icon: <FaRobot /> },
-      { name: 'Hugging Face Transformers', level: 87, icon: <SiHuggingface /> },
-      { name: 'LangChain', level: 82, icon: <FaCode /> },
       { name: 'LayoutLM / Donut', level: 78, icon: <FaCode /> },
       { name: 'Prompt Engineering', level: 85, icon: <FaRobot /> },
-    ],
-  },
-  {
-    title: 'Programming Languages',
-    icon: <FaCode />,
-    skills: [
-      { name: 'Python', level: 92, icon: <DiPython /> },
-      { name: 'JavaScript', level: 78, icon: <DiJavascript /> },
-      { name: 'Java', level: 80, icon: <DiJava /> },
-    ],
-  },
-  {
-    title: 'AI/ML & Data Science',
-    icon: <FaLaptopCode />,
-    skills: [
-      { name: 'Machine Learning', level: 88, icon: <SiTensorflow /> },
-      { name: 'Deep Learning', level: 84, icon: <SiPytorch /> },
-      { name: 'NumPy', level: 90, icon: <SiNumpy /> },
-      { name: 'Pandas', level: 92, icon: <SiPandas /> },
-      { name: 'OpenCV', level: 75, icon: <FaCode /> },
-      { name: 'TensorFlow / PyTorch', level: 80, icon: <SiTensorflow /> },
-    ],
-  },
-  {
-    title: 'Backend & Frameworks',
-    icon: <FaServer />,
-    skills: [
-      { name: 'Django REST Framework', level: 88, icon: <SiDjango /> },
-      { name: 'Flask', level: 80, icon: <SiFlask /> },
-      { name: 'Streamlit', level: 82, icon: <SiStreamlit /> },
-      { name: 'REST API Design', level: 88, icon: <FaServer /> },
     ],
   },
   {
@@ -183,22 +149,79 @@ const skillsData = [
     ],
   },
   {
-    title: 'DevOps & Tools',
-    icon: <FaTools />,
+    title: 'Programming Languages',
+    icon: <FaCode />,
     skills: [
-      { name: 'Docker', level: 82, icon: <FaDocker /> },
-      { name: 'Git', level: 90, icon: <SiGit /> },
-      { name: 'GitHub', level: 90, icon: <FaGithub /> },
-      { name: 'Postman', level: 85, icon: <SiPostman /> },
-      { name: 'Jupyter Notebook', level: 88, icon: <SiJupyter /> },
+      { name: 'Python', level: 85, icon: <DiPython /> },
+      { name: 'Java', level: 80, icon: <DiJava /> },
+      { name: 'JavaScript', level: 75, icon: <DiJavascript /> },
     ],
   },
   {
-    title: 'Database & Query',
+    title: 'Database & Query Language',
     icon: <FaDatabase />,
     skills: [
-      { name: 'MySQL', level: 82, icon: <AiOutlineConsoleSql /> },
-      { name: 'SQLite', level: 78, icon: <AiOutlineConsoleSql /> },
+      { name: 'MySQL', level: 80, icon: <AiOutlineConsoleSql /> },
+      { name: 'SQLite', level: 75, icon: <AiOutlineConsoleSql /> },
+    ],
+  },
+  {
+    title: 'Frameworks',
+    icon: <FaLaptopCode />,
+    skills: [
+      { name: 'Django', level: 82, icon: <SiDjango /> },
+      { name: 'Streamlit', level: 78, icon: <SiStreamlit /> },
+      { name: 'Flask', level: 75, icon: <SiFlask /> },
+    ],
+  },
+  {
+    title: 'Web Technologies',
+    icon: <FaCode />,
+    skills: [
+      { name: 'HTML5', level: 85, icon: <DiHtml5 /> },
+      { name: 'CSS3', level: 80, icon: <DiCss3 /> },
+    ],
+  },
+  {
+    title: 'Tools & IDEs',
+    icon: <FaTools />,
+    skills: [
+      { name: 'Git', level: 85, icon: <SiGit /> },
+      { name: 'GitHub', level: 85, icon: <FaGithub /> },
+      { name: 'VS Code', level: 90, icon: <DiVisualstudio /> },
+      { name: 'Docker', level: 70, icon: <FaDocker /> },
+      { name: 'Postman', level: 80, icon: <SiPostman /> },
+      { name: 'Jupyter Notebook', level: 85, icon: <SiJupyter /> },
+    ],
+  },
+  {
+    title: 'Data Science & ML',
+    icon: <FaLaptopCode />,
+    skills: [
+      { name: 'NumPy', level: 85, icon: <SiNumpy /> },
+      { name: 'Pandas', level: 90, icon: <SiPandas /> },
+      { name: 'Matplotlib', level: 80, icon: <SiPandas /> },
+      { name: 'Seaborn', level: 80, icon: <SiPandas /> },
+      { name: 'Machine Learning', level: 82, icon: <SiTensorflow /> },
+      { name: 'Deep Learning', level: 80, icon: <SiPytorch /> },
+      { name: 'Hugging Face', level: 75, icon: <SiPytorch /> },
+      { name: 'LangChain', level: 70, icon: <SiTensorflow /> },
+      { name: 'OpenCV', level: 70, icon: <FaCode /> },
+    ],
+  },
+  {
+    title: 'Course Work',
+    icon: <FaTools />,
+    skills: [
+      { name: 'Data Structures & Algorithms', level: 85, icon: <FaCode /> },
+      { name: 'Object-Oriented Programming', level: 88, icon: <FaCode /> },
+      { name: 'Computer Networks', level: 80, icon: <FaServer /> },
+      { name: 'Operating Systems', level: 82, icon: <FaLaptopCode /> },
+      { name: 'Data Mining', level: 80, icon: <FaDatabase /> },
+      { name: 'Neural Networks', level: 78, icon: <SiTensorflow /> },
+      { name: 'Linear Algebra', level: 85, icon: <SiNumpy /> },
+      { name: 'Calculus', level: 83, icon: <SiNumpy /> },
+      { name: 'Statistics', level: 85, icon: <SiPandas /> },
     ],
   },
 ];
