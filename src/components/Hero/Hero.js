@@ -7,7 +7,7 @@ const HeroSection = styled.section`
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 5%;
+  padding: 100px 5% 60px;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, ${theme.colors.background} 0%, #1e293b 100%);
@@ -57,66 +57,92 @@ const HeroContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   position: relative;
   z-index: 1;
 `;
 
 const Greeting = styled(motion.span)`
   color: ${theme.colors.primary};
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  margin-bottom: 1rem;
   display: block;
 `;
 
 const Name = styled(motion.h1)`
-  font-size: 4rem;
+  font-size: 3.8rem;
   font-weight: 800;
   color: ${theme.colors.text};
   margin: 0;
   line-height: 1.1;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: 3rem;
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: 2.2rem;
   }
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: ${theme.colors.textSecondary};
-  margin: 0.5rem 0 1.5rem;
+  margin: 0;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: 1.2rem;
   }
 `;
 
-const TagLine = styled(motion.p)`
-  font-size: 1rem;
+const TagLine = styled(motion.div)`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+  font-size: 0.9rem;
   color: ${theme.colors.primary};
   font-family: 'Fira Code', monospace;
-  margin-bottom: 0.5rem;
   opacity: 0.85;
+
+  span {
+    white-space: nowrap;
+  }
+
+  .sep {
+    color: ${theme.colors.textSecondary};
+    margin: 0 0.4rem;
+    opacity: 0.5;
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Description = styled(motion.p)`
-  max-width: 650px;
-  font-size: 1.15rem;
+  max-width: 620px;
+  font-size: 1.05rem;
   line-height: 1.7;
   color: ${theme.colors.textSecondary};
-  margin-bottom: 2.5rem;
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: 0.95rem;
+  }
 `;
 
 const Button = styled(motion.a)`
   display: inline-block;
   background: ${theme.colors.primary};
   color: white;
-  padding: 0.8rem 2rem;
+  padding: 0.75rem 1.8rem;
   border-radius: 5px;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
   cursor: pointer;
   text-decoration: none;
@@ -132,7 +158,7 @@ const Button = styled(motion.a)`
 const SocialLinks = styled.div`
   display: flex;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 `;
 
 const SocialLink = styled(motion.a)`
@@ -146,15 +172,19 @@ const SocialLink = styled(motion.a)`
   }
 `;
 
+const TAG_ITEMS = [
+  'LLM Systems',
+  'Intelligent Document Processing',
+  'RAG & Workflow Automation',
+  'Backend AI',
+];
+
 const Hero = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.18, delayChildren: 0.3 },
     },
   };
 
@@ -163,11 +193,7 @@ const Hero = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 10,
-      },
+      transition: { type: 'spring', stiffness: 100, damping: 10 },
     },
   };
 
@@ -185,22 +211,26 @@ const Hero = () => {
       </ScrollIndicator>
 
       <HeroContent>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
           <Greeting variants={itemVariants}>Hi, I'm</Greeting>
           <Name variants={itemVariants}>Buddhadeb Bhattacharya</Name>
           <Title variants={itemVariants}>AI & Automation Engineer</Title>
+
           <TagLine variants={itemVariants}>
-            LLM Systems &nbsp;|&nbsp; Intelligent Document Processing &nbsp;|&nbsp; RAG & Workflow Automation &nbsp;|&nbsp; Backend AI
+            {TAG_ITEMS.map((item, i) => (
+              <React.Fragment key={item}>
+                <span>{item}</span>
+                {i < TAG_ITEMS.length - 1 && <span className="sep">|</span>}
+              </React.Fragment>
+            ))}
           </TagLine>
+
           <Description variants={itemVariants}>
             I build AI-powered automation systems that solve real operational problems. My work combines
             Generative AI, NLP, and backend engineering to design production-ready intelligent systems
             that move beyond experimentation into real deployment.
           </Description>
+
           <Button
             variants={itemVariants}
             href="#contact"
@@ -213,7 +243,7 @@ const Hero = () => {
           <SocialLinks>
             {[
               { platform: 'github', url: 'https://github.com/RahulAIML' },
-              { platform: 'linkedin', url: 'https://www.linkedin.com/in/buddhadeb-bhattacharya-005768299/' }
+              { platform: 'linkedin', url: 'https://www.linkedin.com/in/buddhadeb-bhattacharya-005768299/' },
             ].map((social, index) => (
               <SocialLink
                 key={social.platform}
