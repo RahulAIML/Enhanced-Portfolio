@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
-import { FaBriefcase, FaCalendarAlt, FaTasks } from 'react-icons/fa';
+import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 
 const WorkExperienceSection = styled.section`
   padding: 100px 5%;
@@ -25,7 +25,7 @@ const SectionTitle = styled(motion.h2)`
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -61,7 +61,7 @@ const ExperienceHeader = styled.div`
   margin-bottom: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
-  
+
   h3 {
     font-size: 1.5rem;
     color: ${theme.colors.primary};
@@ -70,7 +70,7 @@ const ExperienceHeader = styled.div`
     align-items: center;
     gap: 0.5rem;
   }
-  
+
   .date {
     background: rgba(37, 99, 235, 0.1);
     color: ${theme.colors.primary};
@@ -86,22 +86,29 @@ const ExperienceHeader = styled.div`
 const CompanyInfo = styled.div`
   font-size: 1.1rem;
   color: ${theme.colors.text};
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 `;
 
+const EmploymentType = styled.span`
+  font-size: 0.85rem;
+  color: ${theme.colors.textSecondary};
+  margin-bottom: 1rem;
+  display: block;
+`;
+
 const Responsibilities = styled.ul`
   margin: 1rem 0 0 1.5rem;
   padding: 0;
-  
+
   li {
     color: ${theme.colors.textSecondary};
     margin-bottom: 0.5rem;
     line-height: 1.6;
     position: relative;
-    
+
     &::before {
       content: '•';
       color: ${theme.colors.primary};
@@ -117,19 +124,34 @@ const WorkExperience = () => {
   const experiences = [
     {
       id: 1,
-      position: 'AI Engineer Intern',
-      company: '99 Ideas Saas Private Limited',
-      location: 'Pune, Maharashtra',
-      date: 'Mar 2025 – Present',
+      position: 'AI Researcher',
+      company: 'RolPlay',
+      employmentType: 'Full-time · Remote',
+      location: 'Mexico',
+      date: 'Nov 2025 – Present',
       responsibilities: [
-        'Created a custom dataset from raw text documents using Hugging Face APIs and formatted it in JSONL for fine-tuning.',
-        'Fine-tuned the Gemma language model to develop a high-accuracy document information extractor, achieving 90%+ accuracy on validation data.',
-        'Designed and implemented a production-grade AI-powered document processing system to convert unstructured documents into structured JSON format.',
-        'Developed and deployed RESTful APIs using Django REST Framework and Docker; tested and validated API endpoints using Postman.',
-        'Collaborated with frontend and backend teams to seamlessly integrate AI services into the production environment.',
-        'Followed Agile development practices, using Git for version control and actively contributing to a customer-facing product.'
-      ]
-    }
+        'Building and optimizing AI-driven products across conversational AI, workflow automation, and intelligent document systems.',
+        'Developing AI-powered coaching and communication platforms, language assessment applications, dashboard systems, and scalable automation workflows for business operations.',
+        'Driving AI automation using Make and Zapier — integrating CRM systems, WhatsApp workflows, email automation, and webhook pipelines to improve operational efficiency and user engagement.',
+        'Conducting in-depth research on large language models, multimodal AI systems, and avatar-based AI solutions to enhance product intelligence and support strategic AI implementation.',
+        'Key areas: Generative AI & LLM research, conversational AI architecture, AI-powered dashboards, multi-tenant systems, and product strategy through AI model evaluation and experimentation.',
+      ],
+    },
+    {
+      id: 2,
+      position: 'Machine Learning Engineer',
+      company: '99IDEAS INFOTECH SERVICES',
+      employmentType: 'Full-time · Remote',
+      location: 'Pune District, Maharashtra, India',
+      date: 'Mar 2025 – Nov 2025',
+      responsibilities: [
+        'Fine-tuned the Gemma language model on a custom dataset (formatted via Hugging Face APIs) to build a high-accuracy document information extractor, achieving 90%+ validation accuracy.',
+        'Designed and deployed a production-grade document processing system converting unstructured documents into structured JSON using NLP and transformer-based models like LayoutLM and Donut.',
+        'Built and deployed RESTful APIs using Django REST Framework and Docker; validated all API endpoints using Postman with comprehensive test coverage.',
+        'Worked closely with frontend and backend teams to integrate AI services seamlessly into a live production environment.',
+        'Followed Agile development practices, using Git for version control and contributing directly to a customer-facing product.',
+      ],
+    },
   ];
 
   return (
@@ -143,7 +165,7 @@ const WorkExperience = () => {
         >
           Work Experience
         </SectionTitle>
-        
+
         <ExperienceContainer>
           {experiences.map((exp) => (
             <ExperienceItem
@@ -163,13 +185,13 @@ const WorkExperience = () => {
                   {exp.date}
                 </div>
               </ExperienceHeader>
-              
+
               <CompanyInfo>
                 {exp.company} • {exp.location}
               </CompanyInfo>
-              
+              <EmploymentType>{exp.employmentType}</EmploymentType>
+
               <div>
-                <h4>Key Responsibilities:</h4>
                 <Responsibilities>
                   {exp.responsibilities.map((responsibility, index) => (
                     <li key={index}>{responsibility}</li>

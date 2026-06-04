@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
-import { FaCode, FaServer, FaDatabase, FaLaptopCode, FaTools, FaGithub, FaDocker } from 'react-icons/fa';
-import { DiPython, DiJava, DiJavascript, DiHtml5, DiCss3, DiVisualstudio} from 'react-icons/di';
-import { SiDjango, SiFlask, SiStreamlit, SiGit, SiPostman, SiJupyter, SiPandas, SiNumpy, SiTensorflow, SiPytorch } from 'react-icons/si';
+import { FaCode, FaServer, FaDatabase, FaLaptopCode, FaTools, FaGithub, FaDocker, FaRobot, FaPlug } from 'react-icons/fa';
+import { DiPython, DiJava, DiJavascript, DiHtml5, DiCss3, DiVisualstudio } from 'react-icons/di';
+import { SiDjango, SiFlask, SiStreamlit, SiGit, SiPostman, SiJupyter, SiPandas, SiNumpy, SiTensorflow, SiPytorch, SiZapier } from 'react-icons/si';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 const SkillsSection = styled.section`
@@ -28,7 +28,7 @@ const SectionTitle = styled(motion.h2)`
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -46,7 +46,7 @@ const SkillsContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
-  
+
   @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
   }
@@ -58,12 +58,12 @@ const SkillCategory = styled(motion.div)`
   padding: 2rem;
   box-shadow: ${theme.shadows.lg};
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   }
-  
+
   h3 {
     display: flex;
     align-items: center;
@@ -71,7 +71,7 @@ const SkillCategory = styled(motion.div)`
     color: ${theme.colors.primary};
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    
+
     svg {
       font-size: 1.8rem;
     }
@@ -91,11 +91,11 @@ const SkillItem = styled(motion.li)`
   gap: 1rem;
   padding: 0.8rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  
+
   &:last-child {
     border-bottom: none;
   }
-  
+
   .icon {
     font-size: 1.8rem;
     color: ${theme.colors.primary};
@@ -103,21 +103,21 @@ const SkillItem = styled(motion.li)`
     display: flex;
     justify-content: center;
   }
-  
+
   .skill-info {
     h4 {
       color: ${theme.colors.text};
       font-size: 1.1rem;
       margin-bottom: 0.3rem;
     }
-    
+
     .skill-level {
       height: 5px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 5px;
       overflow: hidden;
       margin-top: 0.5rem;
-      
+
       .level {
         height: 100%;
         background: ${theme.colors.primary};
@@ -128,6 +128,26 @@ const SkillItem = styled(motion.li)`
 `;
 
 const skillsData = [
+  {
+    title: 'LLM & Generative AI',
+    icon: <FaRobot />,
+    skills: [
+      { name: 'Large Language Models (LLM)', level: 88, icon: <FaRobot /> },
+      { name: 'RAG Systems', level: 85, icon: <FaRobot /> },
+      { name: 'LayoutLM / Donut', level: 78, icon: <FaCode /> },
+      { name: 'Prompt Engineering', level: 85, icon: <FaRobot /> },
+    ],
+  },
+  {
+    title: 'Automation & Integration',
+    icon: <FaPlug />,
+    skills: [
+      { name: 'Make (Integromat)', level: 82, icon: <FaPlug /> },
+      { name: 'Zapier', level: 80, icon: <SiZapier /> },
+      { name: 'CRM & Webhook Automation', level: 78, icon: <FaPlug /> },
+      { name: 'Email & WhatsApp Workflows', level: 80, icon: <FaPlug /> },
+    ],
+  },
   {
     title: 'Programming Languages',
     icon: <FaCode />,
@@ -241,7 +261,7 @@ const Skills = () => {
         >
           My Skills
         </SectionTitle>
-        
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -272,8 +292,8 @@ const Skills = () => {
                       <div className="skill-info">
                         <h4>{skill.name}</h4>
                         <div className="skill-level">
-                          <div 
-                            className="level" 
+                          <div
+                            className="level"
                             style={{ width: `${skill.level}%` }}
                           />
                         </div>
