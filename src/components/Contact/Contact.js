@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import emailjs from '@emailjs/browser';
 import { theme } from '../../styles/theme';
 import { FaPaperPlane, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
+
+const EMAILJS_SERVICE_ID  = 'service_92v6j7w';
+const EMAILJS_TEMPLATE_ID = 'template_r8aii01';
+const EMAILJS_PUBLIC_KEY  = 'p6-GidjVuNheSN9Xb';
 
 const ContactSection = styled.section`
   padding: 100px 5%;
@@ -250,32 +255,33 @@ const Contact = () => {
     }
     
     setStatus({ submitting: true, success: null, message: '' });
-    
+
     try {
-      // Replace with your form submission logic (e.g., Formspree, EmailJS, etc.)
-      // This is a mock implementation
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:  formData.name,
+          from_email: formData.email,
+          subject:    formData.subject || 'Portfolio Contact',
+          message:    formData.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
       setStatus({
         submitting: false,
         success: true,
-        message: 'Your message has been sent successfully! I will get back to you soon.'
+        message: 'Message sent! I\'ll get back to you soon.',
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+
     } catch (error) {
-      console.error('Error submitting form:', error);
       setStatus({
         submitting: false,
         success: false,
-        message: 'Something went wrong. Please try again later.'
+        message: 'Something went wrong. Please try again or email me directly.',
       });
     }
   };
