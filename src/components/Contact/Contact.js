@@ -308,7 +308,7 @@ const Contact = () => {
               </div>
               <div className="details">
                 <h4>Location</h4>
-                <span>Greater Kolkata Area, West Bengal, India</span>
+                <span>Kolkata, West Bengal, India</span>
               </div>
             </ContactMethod>
             
